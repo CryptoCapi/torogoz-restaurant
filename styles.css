@@ -5,9 +5,9 @@ html, body {
     padding: 0;
     scroll-behavior: smooth;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #002b5c; /* Azul fuerte */
-background: url('images/fondo.jpg') no-repeat center center fixed;
-background-size: cover;
+    color: #002b5c;
+    background: url('images/fondo.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 .content {
@@ -20,12 +20,13 @@ background-size: cover;
 
 /* Header */
 header {
-    background-color: #0050a0; /* Azul bandera salvadoreña */
+    background-color: #0050a0;
     padding: 20px;
     border-radius: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
@@ -33,23 +34,53 @@ header {
     height: 60px;
 }
 
-nav ul {
-    list-style: none;
+/* Menú normal (escritorio) */
+nav.desktop {
     display: flex;
     gap: 20px;
-    margin: 0;
-    padding: 0;
 }
 
-nav a {
+nav.desktop a {
     text-decoration: none;
     color: white;
     font-weight: bold;
     transition: color 0.3s;
 }
 
-nav a:hover {
-    color: #ffdd00; /* Amarillo suave como contraste */
+nav.desktop a:hover {
+    color: #ffdd00;
+}
+
+/* Menú hamburguesa */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+}
+
+/* Menú móvil */
+nav.mobile {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+nav.mobile a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background-color: #0074d9;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 /* Secciones */
@@ -106,7 +137,7 @@ input, textarea {
     border-radius: 10px;
 }
 
-/* Pie de página */
+/* Footer */
 footer {
     background-color: #003366;
     color: white;
@@ -116,7 +147,7 @@ footer {
     margin-top: 40px;
 }
 
-/* Botón WhatsApp */
+/* WhatsApp botón */
 .whatsapp {
     position: fixed;
     bottom: 20px;
@@ -144,3 +175,34 @@ footer {
 .redes-sociales img:hover {
     transform: scale(1.1);
 }
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 768px) {
+    nav.desktop {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    nav.mobile {
+        display: none;
+    }
+
+    nav.mobile.active {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    nav.mobile,
+    .hamburger {
+        display: none;
+    }
+
+    nav.desktop {
+        display: flex;
+    }
+}
+
